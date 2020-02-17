@@ -1,0 +1,67 @@
+<% layout('layout/layout')%>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %> Main Page!</p>
+<div id="link-wrap">
+  <ul>
+    <li><a href="/login">login page 이동</a></li>
+    <li><a href="/profile">my page 이동 </a></li>
+    <li><a href="/logout">logout page 이동</a></li>
+  </ul>
+</div>
+
+<h2>API 목록 테스트</h2>
+<form action="#">
+  <button id="btn-find" class="btn btn-default">조회</button>
+  <button id="btn-reg" class="btn btn-default">입력</button>
+  <button id="btn-remove" class="btn btn-default">삭제</button>
+</form>
+<table class="table" id="api-table">
+  <thead>
+    <tr>
+      <td>index</td>
+      <td>port</td>
+      <td>link </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>http://http://dev-tid.sktplace.net/tid</td>
+    </tr>
+  </tbody>
+</table>
+<script>
+  window.onload = function () {
+    tableInit();
+  };
+
+  $("btn-find").on("click", function (e) {
+    alert("find call");
+  });
+  $("btn-reg").on("click", function (e) {
+    alert("find reg");
+  });
+  $("btn-remove").on("click", function (e) {
+    alert("find remove");
+  });
+
+  function tableInit() {
+    var list = [
+      { index: 1, link: "http://http://dev-tid.sktplace.net/tid", port: 11001 },
+      { index: 2, link: "http://http://dev-tid.sktplace.net/csp", port: 11002 },
+      { index: 3, link: "http://http://dev-tid.sktplace.net/twd", port: 11003 },
+    ];
+    var apiTableSelector = $("#api-table > tbody");
+    apiTableSelector.empty();
+    list.map(l => {
+      apiTableSelector.append(`
+          <tr>
+            <td>${l.index}</td>
+            <td>${l.port}</td>
+            <td><a href=${l.link}>${l.link}</a></td>
+          </tr>
+        `);
+    });
+  }
+
+</script>

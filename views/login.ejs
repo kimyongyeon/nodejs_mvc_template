@@ -1,0 +1,23 @@
+<% layout('layout/layout')%>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %> Login Page!</p>
+<div id="mylink">
+  <a href="/">home 으로</a>
+</div>
+<form action="/loginProc">
+  <input type="text" placeholder="id">
+  <input type="text" placeholder="password">
+  <button id="btn-login">로그인</button>
+  <button id="btn-cancel">로그인취소</button>
+</form>
+
+<script>
+  // alert("로그인이 가능하나요?");
+  axios.get('https://jsonplaceholder.typicode.com/users/')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+</script>
